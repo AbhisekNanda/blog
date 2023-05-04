@@ -1,0 +1,55 @@
+<html> 
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<link rel="stylesheet" type="text/css" href="../static/index.css"> 
+
+	</head>
+	
+	<body>
+        <center>
+        <h2>welcome {{ name }}</h2>
+        </center>
+        <center>
+            <a href="/newblog">
+                <button type="Submit">Add Blog</button>
+            </a>
+        </center>
+        <br>
+        <center>
+            {% if blogs %}
+                
+                <table>
+                    <tr>
+                        <td>Blog Name</td>
+                        <td>       </td>
+                        <td>Blog Title</td>
+                        <td>       </td>
+                        <td>Blog type</td>
+                    </tr>
+                    {% for blog in blogs %}
+                    <tr>
+                        <td>{{blog["blog_name"]}}</td>
+                        <td>       </td>
+                        <td>{{blog["blog_title"]}}</td>
+                        <td>       </td>
+                        <td>{{blog["type"]}}</td>
+                        <td>       </td>
+                        
+                        <td>
+                            <a href="{{ url_for('id_view',id=blog["blog_id"]) }}">
+                                <button type="Submit">View</button>
+                            </a>
+                            <a href="/home">
+                                <button type="Submit" >Delete</button>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                
+            {% endif %}
+        </center>
+        </form>
+    </body>
+</html>
